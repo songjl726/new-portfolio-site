@@ -1,0 +1,22 @@
+import { motion } from 'framer-motion';
+import headshot from '../assets/headshot.jpg';
+
+export default function Home() {
+    return (
+        <motion.section
+            className="flex flex-col items-center justify-center text-center min-h-screen px-4 py-12 bg-white dark:bg-gray-900 transition-colors duration-300"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -30 }}
+            transition={{ duration: 0.4 }}
+        >
+            <img
+                src={headshot}
+                alt="Professional Headshot"
+                className="w-32 h-32 rounded-full shadow-lg border-4 border-blue-300 dark:border-yellow-300 mb-6"
+            />
+            <h1 className="text-4xl font-bold text-gray-800 dark:text-white">LiAn Song</h1>
+            <p className="text-lg text-gray-600 dark:text-gray-300 mt-2">liansong726@gmail.com</p>
+        </motion.section>
+    );
+}
