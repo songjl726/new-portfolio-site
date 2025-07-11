@@ -20,31 +20,15 @@ h2 {
     @apply font-title text-[2.5rem];
 }
 
+.dark h1,
+.dark h2 {
+  color: white;                 /* fallback for normal browsers   */
+  -webkit-text-fill-color:white;/* Chrome/Safari force glyph fill */
+}
+
 @layer components {
-    .glass-card {
-        @apply relative py-4 px-4 overflow-hidden rounded-full border border-white/20 shadow-xl backdrop-blur-xl bg-white/20 dark:bg-white/60 text-center;
-    }
-
-    .glass-card::before {
-        content: '';
-        @apply absolute top-0 left-0 right-0 h-px;
-        background: linear-gradient(90deg,
-                transparent,
-                rgba(255, 255, 255, 0.2),
-                transparent);
-    }
-
-    .glass-card::after {
-        content: '';
-        @apply absolute top-0 left-0 w-px h-full;
-        background: linear-gradient(180deg,
-                rgba(255, 255, 255, 0.2),
-                transparent,
-                rgba(255, 255, 255, 0.2));
-    }
-
     .glass-bar {
-        @apply w-full backdrop-blur-xl bg-white/30 dark:bg-white/10 border-b border-white/20 dark:border-white/10 shadow-md flex items-center;
+        @apply w-full backdrop-blur-xl bg-transparent dark:bg-white/5 border-b border-white/5 dark:border-white/10 shadow-md flex items-center;
     }
 
     /* pill-like link */

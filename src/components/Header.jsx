@@ -1,24 +1,47 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import DarkModeToggle from './DarkModeToggle';
 
 export default function Header() {
     return (
 
-        <header className="glass-bar px-8 py-4">      {/* <-- we’ll enlarge later */}
-            {/* LEFT group ─ give it same width as the right side */}
+        <header className="glass-bar px-8 py-4">
+            {/* LEFT group */}
             <div className="flex-none w-40">
                 <NavLink to="/" className="glass-pill">Home</NavLink>
             </div>
 
-            {/* CENTER links stay exactly the same */}
+            {/* CENTER group */}
             <nav className="flex-1 flex justify-center gap-4">
-                <NavLink to="/art" className="glass-pill">Art</NavLink>
-                <NavLink to="/coding" className="glass-pill">Coding</NavLink>
-                <NavLink to="/contact" className="glass-pill">Contact</NavLink>
+                <NavLink
+                    to="/art"
+                    className={({ isActive }) =>
+                        isActive ? 'glass-pill ring-2 ring-white/70 bg-white/30' : 'glass-pill'
+                    }
+                >
+                    Art
+                </NavLink>
+
+                <NavLink
+                    to="/coding"
+                    className={({ isActive }) =>
+                        isActive ? 'glass-pill ring-2 ring-white/70 bg-white/30' : 'glass-pill'
+                    }
+                >
+                    Coding
+                </NavLink>
+
+                <NavLink
+                    to="/contact"
+                    className={({ isActive }) =>
+                        isActive ? 'glass-pill ring-2 ring-white/70 bg-white/30' : 'glass-pill'
+                    }
+                >
+                    Contact
+                </NavLink>
             </nav>
 
-            {/* RIGHT group ─ now also fixed at w-40, matching left */}
+
+            {/* RIGHT group */}
             <div className="flex-none w-40 flex items-center gap-4 justify-end">
 
                 {/* Resume icon */}
@@ -36,6 +59,22 @@ export default function Header() {
                     </svg>
                 </a>
 
+                {/* Itch.io */}
+                <a
+                    href="https://songjl.itch.io/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Itch.io"
+                    className="glass-pill p-2"
+                >
+                    <svg
+                        className="w-5 h-5 fill-current"
+                        viewBox="0 0 24 24"
+                    >
+                        <path d="M2 3.5A1.5 1.5 0 013.5 2h17A1.5 1.5 0 0122 3.5v17a1.5 1.5 0 01-1.5 1.5h-17A1.5 1.5 0 012 20.5v-17zM7 6H4v5h1v4.5L6 18h12l1-2.5V11h1V6h-3v2H7V6zm2 7v2h6v-2H9z" />
+                    </svg>
+                </a>
+
                 {/* LinkedIn */}
                 <a href="https://linkedin.com/in/lian-song" target="_blank" rel="noopener noreferrer"
                     aria-label="LinkedIn" className="glass-pill p-2">
@@ -44,7 +83,6 @@ export default function Header() {
                     </svg>
                 </a>
 
-                <DarkModeToggle />
             </div>
         </header>
     );
