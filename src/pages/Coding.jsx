@@ -3,9 +3,7 @@ import React from 'react';
 export default function Coding() {
   return (
     <section className="py-10 px-4 min-h-screen transition-colors">
-      <h2 className="text-3xl font-bold text-center text-gray-800 dark:text-gray-100 mb-10">
-        Coding Projects
-      </h2>
+      <h2 className="text-4xl font-title text-center mb-4 mt-8">Coding Projects</h2>
 
       <div className="max-w-4xl mx-auto flex flex-col gap-12">
         {/* Web Game Embed */}

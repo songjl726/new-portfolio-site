@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 export default function Header() {
     return (
 
-        <header className="glass-bar px-8 py-4">
+        <header className="fixed top-0 left-0 w-full glass-bar px-8 py-4">
             {/* LEFT group */}
             <div className="flex-none w-40">
                 <NavLink to="/" className="glass-pill">Home</NavLink>

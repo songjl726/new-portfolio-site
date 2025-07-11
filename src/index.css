@@ -22,8 +22,10 @@ h2 {
 
 .dark h1,
 .dark h2 {
-  color: white;                 /* fallback for normal browsers   */
-  -webkit-text-fill-color:white;/* Chrome/Safari force glyph fill */
+    color: white;
+    /* fallback for normal browsers   */
+    -webkit-text-fill-color: white;
+    /* Chrome/Safari force glyph fill */
 }
 
 @layer components {
@@ -35,7 +37,6 @@ h2 {
     .glass-pill {
         @apply font-title tracking-wide text-lg px-5 py-2 rounded-full transition bg-white/20 dark:bg-white/5 hover:ring-1 hover:ring-white/60 dark:hover:ring-white/40 hover:shadow-lg dark:hover:shadow-md;
     }
-
 }
 
 /* h2 & h3 = VT323 (middle-level headings) */
@@ -43,4 +44,28 @@ h3,
 h4,
 label {
     @apply font-heading text-2xl text-sapphire dark:text-un-blue;
+}
+
+.masonry img {
+    width: 100%;
+    height: auto;
+}
+
+.masonry {
+    column-count: 4;
+    column-gap: 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+    .masonry {
+        column-count: 2;
+    }
+}
+
+@media (max-width: 480px) {
+    .masonry {
+        column-count: 1;
+    }
 }

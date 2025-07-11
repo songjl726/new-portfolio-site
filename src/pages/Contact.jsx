@@ -23,9 +23,7 @@ export default function Contact() {
 
   return (
     <section className="py-10 px-4 min-h-screen transition-colors">
-      <h2 className="text-3xl font-bold text-center text-gray-800 dark:text-gray-100 mb-10">
-        Say Hello!
-      </h2>
+      <h2 className="text-4xl font-title text-center mb-4 mt-8">Say Hello!</h2>
 
       <form
         onSubmit={sendEmail}

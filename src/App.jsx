@@ -25,19 +25,22 @@ function AnimatedRoutes() {
 }
 
 function App() {
-  useEffect(() => {
-    const theme = localStorage.getItem('theme');
-    if (theme === 'dark') document.documentElement.classList.add('dark');
-  }, []);
+  // useEffect(() => {
+  //   const theme = localStorage.getItem('theme');
+  //   if (theme === 'dark') document.documentElement.classList.add('dark');
+  // }, []);
 
   return (
-    <>
+    <div className="flex flex-col min-h-screen">
       <Header />
+
+      {/* main grows to fill leftover space */}
       <main className="flex-grow px-4 py-6">
         <AnimatedRoutes />
       </main>
+
       <Footer />
-    </>
+    </div>
   );
 }
 

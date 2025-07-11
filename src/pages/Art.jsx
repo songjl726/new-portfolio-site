@@ -1,58 +1,35 @@
 import React, { useState } from 'react';
 import Modal from '../components/Modal';
-import placeholder from '../assets/placeholder.png';
-
-const artPieces = [
-    { id: 1, src: placeholder, title: 'Piece One', description: 'A moody digital sketch.' },
-    { id: 2, src: placeholder, title: 'Piece Two', description: 'A vibrant character design.' },
-    { id: 3, src: placeholder, title: 'Piece Three', description: 'A minimalist landscape.' },
-];
+import { artworks } from '../data/artworks';
 
 export default function Art() {
-    const [selectedIndex, setSelectedIndex] = useState(null);
+  const [idx, setIdx] = useState(null);
 
-    const openModal = (index) => {
-        setSelectedIndex(index);
-    };
+  return (
+    <section className="py-12 px-6">
+      <h2 className="text-4xl font-title text-center mb-4 mt-6">Art Portfolio</h2>
+      <p className="text-2x1 text-center mb-10">An assorted collection of doodles and things I've made over the years, mostly just for fun!</p>
 
-    const closeModal = () => {
-        setSelectedIndex(null);
-    };
+      <div className="masonry">
+        {artworks.map((a, i) => (
+          <img
+            key={a.id}
+            src={a.thumb}
+            alt={a.title}
+            className="w-32 mx-auto mb-4 rounded shadow cursor-pointer hover:scale-105 transition"
+            onClick={() => setIdx(i)}
+          />
+        ))}
+      </div>
 
-    const goToNext = () => {
-        setSelectedIndex((prev) => (prev + 1) % artPieces.length);
-    };
-
-    const goToPrev = () => {
-        setSelectedIndex((prev) => (prev - 1 + artPieces.length) % artPieces.length);
-    };
-
-    return (
-        <section className="py-10 px-4 min-h-screen transition-colors">
-            <h2 className="text-3xl font-bold text-center text-gray-800 dark:text-gray-100 mb-8">
-                Art Portfolio
-            </h2>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-                {artPieces.map((art, index) => (
-                    <img
-                        key={art.id}
-                        src={art.src}
-                        alt={art.title}
-                        className="cursor-pointer rounded shadow hover:scale-105 transition-transform duration-200"
-                        onClick={() => openModal(index)}
-                    />
-                ))}
-            </div>
-
-            {selectedIndex !== null && (
-                <Modal
-                    art={artPieces[selectedIndex]}
-                    onClose={closeModal}
-                    onNext={goToNext}
-                    onPrev={goToPrev}
-                />
-            )}
-        </section>
-    );
+      {idx !== null && (
+        <Modal
+          art={artworks[idx]}
+          onClose={() => setIdx(null)}
+          onPrev={() => setIdx((idx - 1 + artworks.length) % artworks.length)}
+          onNext={() => setIdx((idx + 1) % artworks.length)}
+        />
+      )}
+    </section>
+  );
 }
