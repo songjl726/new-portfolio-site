@@ -28,7 +28,7 @@ export default function Art() {
     };
 
     return (
-        <section className="py-10 px-4 min-h-screen bg-white dark:bg-gray-900 transition-colors">
+        <section className="py-10 px-4 min-h-screen transition-colors">
             <h2 className="text-3xl font-bold text-center text-gray-800 dark:text-gray-100 mb-8">
                 Art Portfolio
             </h2>

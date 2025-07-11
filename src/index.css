@@ -1,3 +1,62 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Use Roboto Mono for all body text */
+body {
+    @apply font-body bg-offwhite text-gray-800 dark:bg-gray-900 dark:text-gray-100;
+    background-color: offwhite;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23d4dfe2' fill-opacity='0.54'%3E%3Cpath opacity='.5' d='M96 95h4v1h-4v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9zm-1 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9z'/%3E%3Cpath d='M6 5V0H5v5H0v1h5v94h1V6h94V5H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+.dark body {
+    background-color: gray-900;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%2353676c' fill-opacity='0.99'%3E...%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* h1 = Coral Pixels (signature titles) */
+h1,
+h2 {
+    @apply font-title text-[2.5rem];
+}
+
+@layer components {
+    .glass-card {
+        @apply relative py-4 px-4 overflow-hidden rounded-full border border-white/20 shadow-xl backdrop-blur-xl bg-white/20 dark:bg-white/60 text-center;
+    }
+
+    .glass-card::before {
+        content: '';
+        @apply absolute top-0 left-0 right-0 h-px;
+        background: linear-gradient(90deg,
+                transparent,
+                rgba(255, 255, 255, 0.2),
+                transparent);
+    }
+
+    .glass-card::after {
+        content: '';
+        @apply absolute top-0 left-0 w-px h-full;
+        background: linear-gradient(180deg,
+                rgba(255, 255, 255, 0.2),
+                transparent,
+                rgba(255, 255, 255, 0.2));
+    }
+
+    .glass-bar {
+        @apply w-full backdrop-blur-xl bg-white/30 dark:bg-white/10 border-b border-white/20 dark:border-white/10 shadow-md flex items-center;
+    }
+
+    /* pill-like link */
+    .glass-pill {
+        @apply font-title tracking-wide text-lg px-5 py-2 rounded-full transition bg-white/20 dark:bg-white/5 hover:ring-1 hover:ring-white/60 dark:hover:ring-white/40 hover:shadow-lg dark:hover:shadow-md;
+    }
+
+}
+
+/* h2 & h3 = VT323 (middle-level headings) */
+h3,
+h4,
+label {
+    @apply font-heading text-2xl text-sapphire dark:text-un-blue;
+}

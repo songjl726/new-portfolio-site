@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function Contact() {
   return (
-    <section className="py-10 px-4 min-h-screen bg-white dark:bg-gray-900 transition-colors">
+    <section className="py-10 px-4 min-h-screen transition-colors">
       <h2 className="text-3xl font-bold text-center text-gray-800 dark:text-gray-100 mb-10">
         Contact Me
       </h2>
@@ -11,7 +11,7 @@ export default function Contact() {
         action="mailto:your.email@example.com"
         method="post"
         encType="text/plain"
-        className="max-w-xl mx-auto flex flex-col gap-6 bg-gray-100 dark:bg-gray-800 p-8 rounded shadow"
+        className="max-w-xl mx-auto flex flex-col gap-6 bg-white bg-opacity-60 dark:bg-gray-800 p-8 rounded shadow"
       >
         <div className="flex flex-col">
           <label className="text-gray-700 dark:text-gray-200 mb-1">Name</label>
