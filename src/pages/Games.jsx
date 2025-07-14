@@ -11,7 +11,7 @@ export default function Coding() {
             exit={{ opacity: 0, y: -30 }}
             transition={{ duration: 0.4 }}
         >
-            <h2 className="text-4xl font-title text-center mt-6 mb-6">Coding Projects</h2>
+            <h2 className="text-4xl font-title text-center mb-6">Coding Projects</h2>
 
             {projects.map((p) => (
                 <div key={p.id} className="glass-card p-6 mx-auto max-w-4xl">

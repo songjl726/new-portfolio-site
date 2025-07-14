@@ -15,8 +15,8 @@ export default function Home() {
                 alt="Professional Headshot"
                 className="w-32 h-32 object-cover rounded-full shadow-lg border-4 border-un-blue dark:border-un-blue mb-6"
             />
-            <h1 className="text-4xl glass-card">LiAn Song</h1>
-            <p className="text-lg mt-2 glass-card">liansong726@gmail.com</p>
+            <h1 className="text-4xl">LiAn Song</h1>
+            <p className="text-lg mt-2">liansong726@gmail.com</p>
 
         </motion.section>
     );

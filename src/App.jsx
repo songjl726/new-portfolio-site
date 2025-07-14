@@ -8,6 +8,7 @@ import Art from './pages/Art';
 import Coding from './pages/Coding';
 import Resume from './pages/Resume';
 import Contact from './pages/Contact';
+import Games from './pages/Games'; 
 
 function AnimatedRoutes() {
   const location = useLocation();
@@ -19,6 +20,7 @@ function AnimatedRoutes() {
         <Route path="/coding" element={<Coding />} />
         <Route path="/resume" element={<Resume />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/games" element={<Games />} />
       </Routes>
     </AnimatePresence>
   );
