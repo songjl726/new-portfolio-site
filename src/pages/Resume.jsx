@@ -1,5 +1,3 @@
-import resumePDF from '../assets/resume.pdf';
-
 export default function Resume() {
   return (
     <section className="py-10 px-4 min-h-screen transition-colors">
@@ -7,10 +5,9 @@ export default function Resume() {
 
       <div className="max-w-4xl mx-auto shadow-lg rounded overflow-hidden">
         <iframe
-          src={resumePDF}
+          src="https://docs.google.com/document/d/e/2PACX-1vTwejcfjfJYr-C1NZH0wbSApA6NNPRgvpXvWHkNqALVA7oeJf3O2SkQCZgBCe3Acg/pub?embedded=true"
           title="Resume PDF"
           className="w-full h-[600px] md:h-[700px] rounded"
-          frameBorder="0"
         ></iframe>
       </div>
     </section>
