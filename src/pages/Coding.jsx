@@ -31,7 +31,7 @@ export default function Coding() {
                         {p.tags.map((t) => (
                             <span
                                 key={t}
-                                className="px-3 py-1 text-sm rounded-full bg-sapphire text-white"
+                                className="px-3 py-1 text-sm font-heading rounded-full bg-sapphire text-white"
                             >
                                 {t}
                             </span>
