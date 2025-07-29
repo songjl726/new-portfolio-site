@@ -1,7 +1,16 @@
+import React from 'react';
+import { motion } from 'framer-motion';
+
 export default function Resume() {
   return (
-    <section className="py-10 px-4 min-h-screen transition-colors">
-      <h2 className="text-4xl font-title text-center mb-4 mt-8">My Resume</h2>
+    <motion.section
+      className="px-6 py-12 max-w-4xl mx-auto"
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -30 }}
+      transition={{ duration: 0.4 }}
+    >
+      <h2 className="text-4xl font-title text-center mb-4 mt-8">My Résumé</h2>
 
       <div className="max-w-4xl mx-auto shadow-lg rounded overflow-hidden">
         <iframe
@@ -10,6 +19,6 @@ export default function Resume() {
           className="w-full h-[600px] md:h-[700px] rounded"
         ></iframe>
       </div>
-    </section>
+    </motion.section>
   );
 }

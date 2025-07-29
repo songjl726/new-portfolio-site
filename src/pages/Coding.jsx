@@ -45,7 +45,7 @@ export default function Coding() {
                                 href={p.links.github}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="glass-pill px-4 py-2 flex items-center gap-2 hover:shadow-lg transition"
+                                className="glass-pill px-4 py-2 flex items-center gap-2 hover:shadow-lg bg-white transition"
                                 aria-label="GitHub Repo"
                             >
                                 <span className="font-title text-sm">GitHub</span>
@@ -70,6 +70,24 @@ export default function Coding() {
                                     viewBox="0 0 24 24"
                                 >
                                     <path d="M14 3h7v7M10 14l11-11M5 5v14h14" />
+                                </svg>
+                            </a>
+                        )}
+                        {p.links.devpost && (
+                            <a
+                                href={p.links.devpost}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="glass-pill px-4 py-2 flex items-center gap-2 bg-white hover:shadow-lg transition"
+                                aria-label="Live Link"
+                            >
+                                <span className="font-title text-sm">Devpost</span>
+                                <svg
+                                    className="w-5 h-5 fill-current"
+                                    viewBox="0 0 512 512"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path d="M108.2 103.4 0 256l108.2 152.6h295.6L512 256 403.8 103.4H108.2zm238.4 240.3H165.4L97.8 256l67.6-87.7h181.2l67.6 87.7-67.6 87.7z" />
                                 </svg>
                             </a>
                         )}

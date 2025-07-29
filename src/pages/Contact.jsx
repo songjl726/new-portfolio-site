@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 
 export default function Contact() {
-  const [name, setName]       = useState('');
+
+  const [name, setName] = useState('');
   const [subject, setSubject] = useState('');
   const [message, setMessage] = useState('');
 
@@ -13,16 +15,22 @@ export default function Contact() {
 
     // encode for a safe URL
     const mailto = `
-      mailto:liansong726@gmail.com
-      ?subject=${encodeURIComponent(subject)}
-      &body=${encodeURIComponent(fullBody)}
-    `.replace(/\s+/g, '');           // strip whitespace
+        mailto:liansong726@gmail.com
+        ?subject=${encodeURIComponent(subject)}
+        &body=${encodeURIComponent(fullBody)}
+        `.replace(/\s+/g, '');           // strip whitespace
 
     window.location.href = mailto;
   };
 
   return (
-    <section className="py-10 px-4 min-h-screen transition-colors">
+    <motion.section
+      className="px-6 py-12 max-w-4xl mx-auto"
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -30 }}
+      transition={{ duration: 0.4 }}
+    >
       <h2 className="text-4xl font-title text-center mb-4 mt-8">Say Hello!</h2>
 
       <form
@@ -74,6 +82,6 @@ export default function Contact() {
           Send Message
         </button>
       </form>
-    </section>
+    </motion.section>
   );
 }
