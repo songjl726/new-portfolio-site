@@ -20,7 +20,7 @@ export default function Art() {
             </p>
 
             {/* 2D section */}
-            <h3 className="text-center mb-4 text-[2rem]">✎﹏﹏2D Art﹏﹏﹏</h3>
+            <h3 className="text-center mb-4 text-[2rem] text-rust">✎﹏﹏2D Art﹏﹏﹏</h3>
             <div className="masonry">
                 {artworks.map((a, i) => (
                     <img
@@ -43,7 +43,7 @@ export default function Art() {
             )}
 
             {/* 3D section */}
-            <h3 className="text-center mb-8 mt-8 text-[2rem]">✎﹏﹏3D Art﹏﹏﹏</h3>
+            <h3 className="text-center mb-8 mt-8 text-[2rem] text-rust">✎﹏﹏3D Art﹏﹏﹏</h3>
 
             {['Np3J70_zsDI?si=h0iUYVZPbId0MIke', 'ETktkNK6uVM?si=C8wjp2F1QsQF9JOb'].map((id) => (
                 <div key={id} className="mb-6 w-full aspect-video max-w-2xl mx-auto">
