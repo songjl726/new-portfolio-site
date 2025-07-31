@@ -14,14 +14,34 @@ export const projects = [
       require('../assets/code/climate-cents-7.png'),
       require('../assets/code/climate-cents-8.png'),
     ],
-    tags: ['TypeScript', 'Tailwind CSS', 'Mapbox API', 'NextJS', 'React', 'CloudFlare', 'Git', 'Figma', 'Scrum', 'Full-stack Web Dev'],
+    tags: ['TypeScript', 'Tailwind CSS', 'Mapbox API', 'NextJS', 'React', 'CloudFlare', 'Figma', 'Scrum', 'Full-stack Web Dev'],
     links: {
       // github: 'https://github.com/yourname/pixel-platformer',
       live: 'https://climate-cents.pages.dev/',
     },
   },
   {
-    id: 2,
+    id: 3,
+    title: 'Campfire',
+    description:
+      'A web app that helps university students with friends that attend different schools plan out vacations. Features a dynamic calendar, accounts, and activity discussion boards. Created with HTML/CSS/Javascript and Spring Boot for Java backend.',
+    images: [
+      require('../assets/code/campfire-1.png'),
+      require('../assets/code/campfire-2.png'),
+      require('../assets/code/campfire-3.png'),
+      require('../assets/code/campfire-4.png'),
+      require('../assets/code/campfire-5.png'),
+      require('../assets/code/campfire-6.png'),
+    ],
+    tags: ['Java', 'Full-stack Web Dev', 'Spring Boot', 'HTML/CSS', 'AJAX'],
+    links: {
+      github: 'https://github.com/csci201team25/unicate',
+      // live: 'https://weather.yourdomain.com',
+      // devpost: 'https://devpost.com/software/bon-bon-voyage',
+    },
+  },
+  {
+    id: 5,
     title: 'Bon-Bon Voyage',
     description:
       'A ride-share service for out-of-state university students made with a team in 48 hours. Intended to help search for other students from nearby schools to split transportation costs with. Awarded Best Beginner at AthenaHacks 2024.',
