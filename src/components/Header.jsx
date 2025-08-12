@@ -1,68 +1,77 @@
-import React from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { ReactComponent as LogoIcon } from '../assets/logosvg.svg';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export default function Header() {
-    return (
+    const [navOpen, setNavOpen] = useState(false);
+    const [socialOpen, setSocialOpen] = useState(false);
 
-        <header className="fixed top-0 left-0 w-full glass-bar px-8 py-4 flex items-center justify-between">
-            {/* LEFT group */}
+    const panelVariants = {
+        hidden: { opacity: 0, y: -8 },
+        visible: {
+            opacity: 1,
+            y: 0,
+            transition: { duration: 0.22, ease: 'easeOut' }
+        },
+        exit: { opacity: 0, y: -8, transition: { duration: 0.18, ease: 'easeIn' } }
+    };
+
+    const itemVariants = {
+        hidden: { opacity: 0, y: 6 },
+        visible: (i = 0) => ({
+            opacity: 1, y: 0,
+            transition: { delay: 0.05 * i, duration: 0.2, ease: 'easeOut' }
+        }),
+        exit: { opacity: 0, y: 6, transition: { duration: 0.15 } }
+    };
+
+
+    // close menus when route changes or when opening the other
+    useEffect(() => {
+        if (navOpen) setSocialOpen(false);
+        if (socialOpen) setNavOpen(false);
+    }, [navOpen, socialOpen]);
+
+    return (
+        <header className="fixed top-0 left-0 w-full glass-bar px-4 sm:px-6 py-3 flex items-center justify-between z-50">
+            {/* LEFT: Home logo */}
             <div className="flex-none">
                 <NavLink
                     to="/"
                     className="glass-pill px-2 py-2 inline-flex items-center justify-center"
                     aria-label="Home"
+                    onClick={() => { setNavOpen(false); setSocialOpen(false); }}
                 >
                     <LogoIcon className="w-6 h-6 fill-current" />
                 </NavLink>
             </div>
 
-            {/* CENTER group */}
-            <nav className="absolute left-1/2 transform -translate-x-1/2 flex gap-4">
-                <NavLink
-                    to="/projects"
-                    className={({ isActive }) =>
-                        isActive
-                            ? 'glass-pill ring-2 ring-white/70 bg-white/30'
-                            : 'glass-pill'
-                    }
-                >
-                    Projects
-                </NavLink>
-                <NavLink
-                    to="/art"
-                    className={({ isActive }) =>
-                        isActive
-                            ? 'glass-pill ring-2 ring-white/70 bg-white/30'
-                            : 'glass-pill'
-                    }
-                >
-                    Art
-                </NavLink>
-                <NavLink
-                    to="/about"
-                    className={({ isActive }) =>
-                        isActive
-                            ? 'glass-pill ring-2 ring-white/70 bg-white/30'
-                            : 'glass-pill'
-                    }
-                >
-                    About
-                </NavLink>
-                <NavLink
-                    to="/contact"
-                    className={({ isActive }) =>
-                        isActive
-                            ? 'glass-pill ring-2 ring-white/70 bg-white/30'
-                            : 'glass-pill'
-                    }
-                >
-                    Contact
-                </NavLink>
+            {/* CENTER: Desktop nav (hidden on mobile) */}
+            <nav className="hidden md:flex absolute left-1/2 -translate-x-1/2 gap-4">
+                {[
+                    { to: '/projects', label: 'Projects' },
+                    { to: '/art', label: 'Art' },
+                    { to: '/about', label: 'About' },
+                    { to: '/contact', label: 'Contact' },
+                ].map((link) => (
+                    <NavLink
+                        key={link.to}
+                        to={link.to}
+                        className={({ isActive }) =>
+                            isActive
+                                ? 'glass-pill ring-2 ring-white/70 bg-white/30'
+                                : 'glass-pill'
+                        }
+                    >
+                        {link.label}
+                    </NavLink>
+                ))}
             </nav>
 
+
             {/* RIGHT group */}
-            <div className="flex-none w-40 flex items-center gap-4 justify-end">
+            <div className="hidden md:flex flex-none w-40 items-center gap-4 justify-end">
 
                 {/* Resume icon */}
                 <a href="/resume" aria-label="Resume" className="glass-pill p-2 group">
@@ -104,6 +113,165 @@ export default function Header() {
                 </a>
 
             </div>
+
+            {/* MOBILE: two hamburger buttons */}
+            <div className="md:hidden flex items-center gap-2">
+                {/* Pages menu button */}
+                <button
+                    onClick={() => setNavOpen((v) => !v)}
+                    aria-expanded={navOpen}
+                    aria-controls="mobile-pages"
+                    className="glass-pill px-3 py-2 inline-flex items-center gap-2"
+                >
+                    <span className="text-sm">Pages</span>
+                    {navOpen ? (
+                        // Close "X" icon
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            strokeWidth={2}
+                            stroke="currentColor"
+                            className="w-5 h-5"
+                        >
+                            <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                d="M6 18L18 6M6 6l12 12"
+                            />
+                        </svg>
+                    ) : (
+                        // Hamburger icon
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            strokeWidth={2}
+                            stroke="currentColor"
+                            className="w-5 h-5"
+                        >
+                            <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                d="M3.75 5.75h16.5M3.75 12h16.5m-16.5 6.25h16.5"
+                            />
+                        </svg>
+                    )}
+                </button>
+
+                {/* Socials menu button */}
+                <button
+                    onClick={() => setSocialOpen((v) => !v)}
+                    aria-expanded={socialOpen}
+                    aria-controls="mobile-pages"
+                    className="glass-pill px-3 py-2 inline-flex items-center gap-2"
+                >
+                    <span className="text-sm">Socials</span>
+                    {navOpen ? (
+                        // Close "X" icon
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            strokeWidth={2}
+                            stroke="currentColor"
+                            className="w-5 h-5"
+                        >
+                            <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                d="M6 18L18 6M6 6l12 12"
+                            />
+                        </svg>
+                    ) : (
+                        // Hamburger icon
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            strokeWidth={2}
+                            stroke="currentColor"
+                            className="w-5 h-5"
+                        >
+                            <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                d="M3.75 5.75h16.5M3.75 12h16.5m-16.5 6.25h16.5"
+                            />
+                        </svg>
+                    )}
+                </button>
+            </div>
+
+            {/* MOBILE PANELS (slide-down, vertical) */}
+            <AnimatePresence>
+                {navOpen && (
+                    <motion.div
+                        id="mobile-pages"
+                        className="absolute top-full left-0 w-full px-4 pb-3 pt-2 md:hidden"
+                        initial="hidden"
+                        animate="visible"
+                        exit="exit"
+                        variants={panelVariants}
+                    >
+                        <div className="rounded-2xl backdrop-blur-xl bg-white/30 border border-white/30 shadow-xl p-3 flex flex-col gap-2">
+                            {[
+                                { to: '/projects', label: 'Projects' },
+                                { to: '/art', label: 'Art' },
+                                { to: '/about', label: 'About' },
+                                { to: '/contact', label: 'Contact' },
+                            ].map((link, i) => (
+                                <motion.div key={link.to} variants={itemVariants} custom={i}>
+                                    <NavLink
+                                        to={link.to}
+                                        onClick={() => setNavOpen(false)}
+                                        className={({ isActive }) =>
+                                            `glass-pill text-left ${isActive ? 'ring-2 ring-white/70 bg-white/30' : ''}`
+                                        }
+                                    >
+                                        {link.label}
+                                    </NavLink>
+                                </motion.div>
+                            ))}
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+
+            <AnimatePresence>
+                {socialOpen && (
+                    <motion.div
+                        id="mobile-socials"
+                        className="absolute top-full left-0 w-full px-4 pb-3 pt-2 md:hidden"
+                        initial="hidden"
+                        animate="visible"
+                        exit="exit"
+                        variants={panelVariants}
+                    >
+                        <div className="rounded-2xl backdrop-blur-xl bg-white/30 border border-white/30 shadow-xl p-3 flex flex-col gap-2">
+                            {[
+                                { href: '/resume', label: 'Resume', kind: 'internal' },
+                                { href: 'https://github.com/songjl726', label: 'GitHub' },
+                                { href: 'https://songjl.itch.io/', label: 'Itch.io' },
+                                { href: 'https://linkedin.com/in/lian-song', label: 'LinkedIn' },
+                            ].map((l, i) => (
+                                <motion.div key={l.label} variants={itemVariants} custom={i}>
+                                    <a
+                                        href={l.href}
+                                        {...(l.kind === 'internal' ? {} : { target: '_blank', rel: 'noopener noreferrer' })}
+                                        className="glass-pill p-2 flex items-center gap-2"
+                                        onClick={() => setSocialOpen(false)}
+                                    >
+                                        <span>{l.label}</span>
+                                        {/* keep your SVGs here if you want icons next to labels */}
+                                    </a>
+                                </motion.div>
+                            ))}
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+
         </header>
     );
 }
