@@ -1,5 +1,7 @@
 import { motion } from 'framer-motion';
-import headshot from '../assets/headshot.jpg';
+import headshot from '../assets/chrysanthemums.png';
+import { Link } from "react-router-dom";
+
 
 export default function Home() {
     return (
@@ -27,9 +29,14 @@ export default function Home() {
             <p className="text-lg mt-2">liansong726@gmail.com</p>
 
             <div className="glass-card mt-8 max-w-2xl text-left">
+
+                
                 <p className="text-base leading-relaxed text-center">
                     Welcome to my corner of the internet!
-                    Feel free to poke around and explore all the projects I've worked on...
+                    Feel free to poke around and explore all the{" "}
+                     <Link to="/projects" className="text-un-blue underline hover:text-eminence">projects I've worked on</Link>
+                    ... Or{" "}
+                    <Link to="/about" className="text-un-blue underline hover:text-eminence">learn more about me!</Link>
                 </p>
             </div>
         </motion.section>
