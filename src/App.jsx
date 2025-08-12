@@ -4,11 +4,11 @@ import { AnimatePresence } from 'framer-motion';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './pages/Home';
+import Projects from './pages/Projects'; 
 import Art from './pages/Art';
-import Coding from './pages/Coding';
+import About from './pages/About'; 
 import Resume from './pages/Resume';
 import Contact from './pages/Contact';
-import Games from './pages/Games'; 
 
 function AnimatedRoutes() {
   const location = useLocation();
@@ -17,21 +17,17 @@ function AnimatedRoutes() {
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={<Home />} />
         <Route path="/art" element={<Art />} />
-        <Route path="/coding" element={<Coding />} />
         <Route path="/resume" element={<Resume />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/games" element={<Games />} />
+        <Route path="/projects" element={<Projects />} />
+        <Route path="/about" element={<About />} />
+
       </Routes>
     </AnimatePresence>
   );
 }
 
 function App() {
-  // useEffect(() => {
-  //   const theme = localStorage.getItem('theme');
-  //   if (theme === 'dark') document.documentElement.classList.add('dark');
-  // }, []);
-
   return (
     <div className="flex flex-col min-h-screen">
       <Header />

@@ -1,9 +1,9 @@
-export const projects = [
+export const coding = [
   {
     id: 1,
     title: 'Climate Cents Interactive Map',
     description:
-      'An interactive volunteering project map web app built over the course of a school year with USC Code the Change for nonprofit Blue Sky LA. Features weather overlays, searching and filtering, and admin-side operations (such as creating new projects to display).',
+      'An interactive volunteering project map web app built over the course of a school year with USC Code the Change for nonprofit Blue Sky LA. Features weather overlays, searching and filtering, and admin-side operations (such as creating new projects to display). Created with NextJS, Tailwind, and React.',
     images: [
       require('../assets/code/climate-cents-1.png'),
       require('../assets/code/climate-cents-2.png'),

@@ -42,15 +42,17 @@ h2 {
 @layer components {
     .glass-card {
         /* layout */
-        @apply relative mx-auto my-8 max-w-4xl p-6;
+        @apply relative mx-auto my-8 w-full max-w-4xl px-6 py-6;
 
-        /* glass look */
+        /* glass effect */
         @apply backdrop-blur-xl bg-white/20 border border-white/20 shadow-xl;
-        /* darker variant if you keep dark mode */
         @apply dark:bg-white/10 dark:border-white/10;
 
         /* shape */
         @apply rounded-3xl overflow-hidden;
+
+        /* responsive spacing (accomodate for mobile) */
+        @apply sm:px-4 sm:py-5;
     }
 }
 
@@ -90,6 +92,7 @@ label {
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     gap: 1rem;
+    padding-bottom: 0.5rem;
 }
 
 .carousel img {
@@ -99,4 +102,33 @@ label {
     object-fit: cover;
     border-radius: 0.75rem;
     flex-shrink: 0;
+}
+
+/* Mobile optimization */
+@media (max-width: 480px) {
+    .carousel img {
+        width: 240px;
+        height: 150px;
+    }
+}
+
+
+/* for gradient ring around headshot */
+@keyframes gradient-spin {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.animate-gradient-spin {
+    background-size: 200% 200%;
+    animation: gradient-spin 6s ease infinite;
 }

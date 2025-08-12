@@ -1,55 +1,65 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { ReactComponent as LogoIcon } from '../assets/logosvg.svg';
 
 export default function Header() {
     return (
 
-        <header className="fixed top-0 left-0 w-full glass-bar px-8 py-4">
+        <header className="fixed top-0 left-0 w-full glass-bar px-8 py-4 flex items-center justify-between">
             {/* LEFT group */}
-            <div className="flex-none w-40">
-                <NavLink to="/" className="glass-pill">Home</NavLink>
+            <div className="flex-none">
+                <NavLink
+                    to="/"
+                    className="glass-pill px-2 py-2 inline-flex items-center justify-center"
+                    aria-label="Home"
+                >
+                    <LogoIcon className="w-6 h-6 fill-current" />
+                </NavLink>
             </div>
 
             {/* CENTER group */}
-            <nav className="flex-1 flex justify-center gap-4">
-
+            <nav className="absolute left-1/2 transform -translate-x-1/2 flex gap-4">
                 <NavLink
-                    to="/coding"
+                    to="/projects"
                     className={({ isActive }) =>
-                        isActive ? 'glass-pill ring-2 ring-white/70 bg-white/30' : 'glass-pill'
+                        isActive
+                            ? 'glass-pill ring-2 ring-white/70 bg-white/30'
+                            : 'glass-pill'
                     }
                 >
-                    Coding
+                    Projects
                 </NavLink>
-
-                <NavLink
-                    to="/games"
-                    className={({ isActive }) =>
-                        isActive ? 'glass-pill ring-2 ring-white/70 bg-white/30' : 'glass-pill'
-                    }
-                >
-                    Games
-                </NavLink>
-
                 <NavLink
                     to="/art"
                     className={({ isActive }) =>
-                        isActive ? 'glass-pill ring-2 ring-white/70 bg-white/30' : 'glass-pill'
+                        isActive
+                            ? 'glass-pill ring-2 ring-white/70 bg-white/30'
+                            : 'glass-pill'
                     }
                 >
                     Art
                 </NavLink>
-
+                <NavLink
+                    to="/about"
+                    className={({ isActive }) =>
+                        isActive
+                            ? 'glass-pill ring-2 ring-white/70 bg-white/30'
+                            : 'glass-pill'
+                    }
+                >
+                    About
+                </NavLink>
                 <NavLink
                     to="/contact"
                     className={({ isActive }) =>
-                        isActive ? 'glass-pill ring-2 ring-white/70 bg-white/30' : 'glass-pill'
+                        isActive
+                            ? 'glass-pill ring-2 ring-white/70 bg-white/30'
+                            : 'glass-pill'
                     }
                 >
                     Contact
                 </NavLink>
             </nav>
-
 
             {/* RIGHT group */}
             <div className="flex-none w-40 flex items-center gap-4 justify-end">
